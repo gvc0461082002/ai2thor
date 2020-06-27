@@ -7,7 +7,7 @@ using System.Linq;
 
 public class Build
 {
-     public static void Shuffle (List<sameObject>aList) {
+     public static void Shuffle (List<string>aList) {
  
          System.Random _random = new System.Random ();
  
