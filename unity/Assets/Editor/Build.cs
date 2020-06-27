@@ -4,9 +4,29 @@ using System.IO;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using System.Random;
 
 public class Build
 {
+     public static void Shuffle (List<sameObject>aList) {
+ 
+         System.Random _random = new System.Random ();
+ 
+         string myGO;
+ 
+         int n = aList.Count;
+         for (int i = 0; i < n; i++)
+         {
+             // NextDouble returns a random number between 0 and 1.
+             // ... It is equivalent to Math.random() in Java.
+             int r = i + (int)(_random.NextDouble() * (n - i));
+             myGO = aList[r];
+             aList[r] = aList[i];
+             aList[i] = myGO;
+         }
+     }
+
+
     static void OSXIntel64() {
 #if UNITY_2017_3_OR_NEWER
 		var buildTarget  = BuildTarget.StandaloneOSX;
@@ -55,6 +75,8 @@ public class Build
 				scenes.Add (f);
             }
         }
+
+        Shuffle(scenes);
 
         return scenes;
     }
